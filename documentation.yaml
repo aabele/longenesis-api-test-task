@@ -1,0 +1,491 @@
+swagger: "2.0"
+info:
+  title: Longenesis test task API
+  description: URL structure for longenesis test task.
+  version: 1.0.0
+host: localhost:8000
+schemes:
+  - http
+basePath: "/api/v1"
+paths:
+  /users/:
+    get:
+      tags:
+        - user
+      summary: Returns a list of users.
+      description: Returns a list of user data dictionaries
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Successful request
+          schema:
+            type: array
+            $ref: "#/definitions/User"
+        400:
+          description: Invalid authentication info
+    post:
+      tags:
+        - user
+      summary: Create new user.
+      description: Create new user
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Successful request
+          schema:
+            type: object
+            $ref: "#/definitions/User"
+        400:
+          description: Invalid authentication info
+  /users/{user_id}/:
+    get:
+      tags:
+        - user
+      summary: Retrieve details of a single user.
+      description: Returns a dictionary containing a user data
+      parameters:
+      - name: "user_id"
+        in: "path"
+        description: Unique identifier of a user object
+        required: true
+        type: "integer"
+        format: int
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Successful request
+          schema:
+            type: object
+            $ref: "#/definitions/User"
+        404:
+          description: Object not found
+        400:
+          description: Invalid authentication info
+    patch:
+      tags:
+        - user
+      summary: Update user details.
+      description: Update user details and retrieve the updated version
+      parameters:
+      - name: "user_id"
+        in: "path"
+        description: Unique identifier of a user object
+        required: true
+        type: "integer"
+        format: int
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Successful request
+          schema:
+            type: object
+            $ref: "#/definitions/User"
+        400:
+          description: Invalid authentication info
+        404:
+          description: Object not found
+    delete:
+      tags:
+        - user
+      summary: Update user details.
+      description: Update user details and retrieve the updated version
+      parameters:
+        - name: "user_id"
+          in: "path"
+          description: Unique identifier of a user object
+          required: true
+          type: "integer"
+          format: int
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Successful request
+          schema:
+            type: object
+            $ref: "#/definitions/User"
+        400:
+          description: Invalid authentication info
+        404:
+          description: Object not found
+  /questionnaries/:
+    get:
+      tags:
+        - questionnary
+      summary: Returns a list of Questionnaries.
+      description: Returns a list of existing dictionaries
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Successful request
+          schema:
+            type: array
+            $ref: "#/definitions/Questionnary"
+        400:
+          description: Invalid authentication info
+    post:
+      tags:
+        - questionnary
+      summary: Create new questionnary.
+      description: Create new questionnary
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Successful request
+          schema:
+            type: object
+            $ref: "#/definitions/Questionnary"
+        400:
+          description: Invalid authentication info
+  /questionnaries/{questionnary_id}/:
+    get:
+      tags:
+        - questionnary
+      summary: Retrieve details of a single questionnary.
+      description: Returns a dictionary containing a questionnary data
+      parameters:
+        - name: questionnary_id
+          in: path
+          description: Unique identifier of a questionnary object
+          required: true
+          type: integer
+          format: int
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Successful request
+          schema:
+            type: object
+            $ref: "#/definitions/Questionnary"
+        404:
+          description: Object not found
+        400:
+          description: Invalid authentication info
+    patch:
+      tags:
+        - questionnary
+      summary: Update questionnary details.
+      description: Update questionnary details and retrieve the updated version
+      parameters:
+      - name: questionnary_id
+        in: path
+        description: Unique identifier of a questionnary object
+        required: true
+        type: integer
+        format: int
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Successful request
+          schema:
+            type: object
+            $ref: "#/definitions/Questionnary"
+        400:
+          description: Invalid authentication info
+        404:
+          description: Object not found
+    delete:
+      tags:
+        - questionnary
+      summary: Delete questionnary.
+      description: Delete questionnary
+      parameters:
+        - name: questionnary_id
+          in: path
+          description: Unique identifier of a questionnary object
+          required: true
+          type: integer
+          format: int
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Successful request
+          schema:
+            type: object
+            $ref: "#/definitions/Questionnary"
+        400:
+          description: Invalid authentication info
+        404:
+          description: Object not found
+  /questions/:
+    get:
+      tags:
+        - question
+      summary: Returns a list of Questions.
+      description: Returns a list of existing questions
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Successful request
+          schema:
+            type: array
+            $ref: "#/definitions/Question"
+        400:
+          description: Invalid authentication info
+    post:
+      tags:
+        - question
+      summary: Create new question.
+      description: Create new question
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Successful request
+          schema:
+            type: object
+            $ref: "#/definitions/Question"
+        400:
+          description: Invalid authentication info
+  /questions/{question_id}/:
+    get:
+      tags:
+        - question
+      summary: Retrieve details of a single question.
+      description: Returns a dictionary containing a question data
+      parameters:
+        - name: question_id
+          in: path
+          description: Unique identifier of a question object
+          required: true
+          type: integer
+          format: int
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Successful request
+          schema:
+            type: object
+            $ref: "#/definitions/Question"
+        404:
+          description: Object not found
+        400:
+          description: Invalid authentication info
+    patch:
+      tags:
+        - question
+      summary: Update questionnary details.
+      description: Update question details and retrieve the updated version
+      parameters:
+      - name: question_id
+        in: path
+        description: Unique identifier of a question object
+        required: true
+        type: integer
+        format: int
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Successful request
+          schema:
+            type: object
+            $ref: "#/definitions/Question"
+        400:
+          description: Invalid authentication info
+        404:
+          description: Object not found
+    delete:
+      tags:
+        - question
+      summary: Delete question.
+      description: Delete question
+      parameters:
+        - name: question_id
+          in: path
+          description: Unique identifier of a question object
+          required: true
+          type: integer
+          format: int
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Successful request
+          schema:
+            type: object
+            $ref: "#/definitions/Question"
+        400:
+          description: Invalid authentication info
+        404:
+          description: Object not found
+  /answers/:
+    get:
+      tags:
+        - answer
+      summary: Returns a list of Answers.
+      description: Returns a list of existing answers
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Successful request
+          schema:
+            type: array
+            $ref: "#/definitions/Answer"
+        400:
+          description: Invalid authentication info
+    post:
+      tags:
+        - answer
+      summary: Create new answer.
+      description: Create new answer
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Successful request
+          schema:
+            type: object
+            $ref: "#/definitions/Answer"
+        400:
+          description: Invalid authentication info
+  /answers/create-many/:
+    post:
+      tags:
+        - answer
+      summary: Create multiple answers in single http request.
+      description: Create new questions
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Successful request
+          schema:
+            type: array
+            $ref: "#/definitions/Answer"
+        400:
+          description: Invalid authentication info
+  /answers/{answer_id}/:
+    get:
+      tags:
+        - answer
+      summary: Retrieve details of a single answer.
+      description: Returns a dictionary containing an answer data
+      parameters:
+        - name: answer_id
+          in: path
+          description: Unique identifier of a question object
+          required: true
+          type: integer
+          format: int
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Successful request
+          schema:
+            type: object
+            $ref: "#/definitions/Answer"
+        404:
+          description: Object not found
+        400:
+          description: Invalid authentication info
+    patch:
+      tags:
+        - answer
+      summary: Update answer details.
+      description: Update answer details and retrieve the updated version
+      parameters:
+      - name: answer_id
+        in: path
+        description: Unique identifier of an answer object
+        required: true
+        type: integer
+        format: int
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Successful request
+          schema:
+            type: object
+            $ref: "#/definitions/Answer"
+        400:
+          description: Invalid authentication info
+        404:
+          description: Object not found
+    delete:
+      tags:
+        - answer
+      summary: Delete answer.
+      description: Delete answer
+      parameters:
+        - name: answer_id
+          in: path
+          description: Unique identifier of an answer object
+          required: true
+          type: integer
+          format: int
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Successful request
+          schema:
+            type: object
+            $ref: "#/definitions/Answer"
+        400:
+          description: Invalid authentication info
+        404:
+          description: Object not found
+
+definitions:
+  User:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int
+      username:
+        type: string
+        description: User username
+      first_name:
+        type: string
+      last_name:
+        type: string
+  Questionnary:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int
+      name:
+        type: string
+        description: Questionnary name
+  Question:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int
+      contents:
+        type: string
+        description: Question body
+      questionnary:
+        type: integer
+        format: int
+        description: foreign key of a questionnary
+  Answer:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int
+      contents:
+        type: string
+        description: Answer body
+      question:
+        type: integer
+        format: int
